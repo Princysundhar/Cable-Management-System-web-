@@ -1,0 +1,80 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/staff_update_post/{{ data.id }}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table border="1" class="table table-bordered">
+    <tr style="color: black" align="center">
+      <th height="27" scope="row">Name</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" value="{{ data.s_name }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Place</th>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.s_place }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Post</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.s_post }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Pin</th>
+      <td>
+      <input type="tel" pattern="[0-9]{6}" name="textfield4" id="textfield4" value="{{ data.s_pin }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Email</th>
+      <td>
+      <input type="text" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.com" name="textfield5" id="textfield5" value="{{ data.s_email }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Contact</th>
+      <td>
+      <input type="tel" pattern="[0-9]{10}" name="textfield6" id="textfield6" value="{{ data.s_contact }}" class="form-control" required /></td>
+    </tr>
+    
+    <tr style="color: black" align="center">
+      <th scope="row">Qualification</th>
+      <td>
+      <input type="text" name="textfield8" id="textfield8" value="{{ data.s_qualification }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Experience</th>
+      <td>
+      <input type="text" name="textfield9" id="textfield9" value="{{ data.s_experience }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black" align="center">
+    <th scope="row">Category</th>
+    <td>
+    <select name="category" id="category" class="form-control" required>
+    <option value="Office staff">Office staff</option>
+    <option value="Technician">Technician</option>
+    <option value="Helpers">Helper</option>
+    <option value="Networker">Networker</option>
+    </select></td>
+    </tr>
+    <tr style="color: black" align="center">
+      <th scope="row">Photo</th>
+      <td  align="left">
+          <img src="{{ data.s_photo }}" width="100px" height="100px" alt=""/>
+      <input type="file" name="fileField" id="fileField" class="form-control"  /></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="Update"  class="btn btn-outline-success"/></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}

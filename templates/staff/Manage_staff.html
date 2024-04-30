@@ -1,0 +1,81 @@
+{% extends 'staff/staff_index.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/manage_staff_profile_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table width="200" border="1" class="table table-bordered">
+    <tr style="color: black">
+      <th height="27" scope="row">Name</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" value="{{ data.s_name }}" class="form-control" required/></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Place</th>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.s_place }}" class="form-control" required  /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Post</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.s_post }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Pin</th>
+      <td>
+      <input type="tel" pattern="[0-9]{6}" name="textfield4" id="textfield4" value="{{ data.s_pin }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Email</th>
+      <td>
+      <input type="text" name="textfield5" id="textfield5" value="{{ data.s_email }}" class="form-control" readonly /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Contact</th>
+      <td>
+      <input type="tel" pattern="[0-9]{10}" name="textfield6" id="textfield6" value="{{ data.s_contact }}" class="form-control" required /></td>
+    </tr>
+    
+    <tr style="color: black">
+      <th scope="row">Qualification</th>
+      <td>
+      <input type="text" name="textfield8" id="textfield8" value="{{ data.s_qualification }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Experience</th>
+      <td>
+      <input type="text" name="textfield9" id="textfield9" value="{{ data.s_experience }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+    <th scope="row">Category</th>
+    <td>
+    <select name="category" id="category" class="form-control" required>
+    <option value="Office staff" {% if data.s_category == 'Office staff' %}selected{% endif %}>Office staff</option>
+    <option value="Technician" {% if data.s_category == 'Technician' %}selected{% endif %}>Technician</option>
+    <option value="Helpers" {% if data.s_category == 'Helpers' %}selected{% endif %}>Helper</option>
+    <option value="Networker" {% if data.s_category == 'Networker' %}selected{% endif %}>Networker</option>
+        <option value="collection boys" {% if data.s_category == 'collection boys' %}selected{% endif %}>Collection agent</option>
+    </select></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Photo</th>
+      <td>
+      <input type="file" name="fileField" id="fileField" class="form-control" />
+          <img src="{{ data.s_photo }}" width="100px" height="100px"></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="Edit" class="btn btn-outline-success" /></div></th></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}

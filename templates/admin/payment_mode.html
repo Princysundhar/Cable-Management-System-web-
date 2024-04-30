@@ -1,0 +1,57 @@
+{#{% extends 'admin/admin_index.html' %}#}
+{#{% block body %}#}
+
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/payment_mode_post/{{ id }}">
+{% csrf_token %}
+  <table width="200" border="1" class="table table-bordered">
+
+    <tr style="text-align: center">
+      <th colspan="2" scope="row">Payment Mode</th>
+    </tr>
+  <tr>
+      <th>Choose Staff</th>
+      <td><select name="s" class="form-control">
+          {% for i in data %}
+              <option value="{{ i.id }}">{{ i.fnamme }} {{ i.s_name }}</option>
+          {% endfor %}
+      </select> </td>
+  </tr>
+    <tr >
+      <th scope="row">Mode</th>
+      <td><p>
+        <label>
+          <input type="radio" name="mode" value="Online" id="RadioGroup1_0"
+            {% if mode == 'Online' %}checked{% endif %}
+
+          />
+          Online</label>
+        <br />
+        <label>
+          <input type="radio" name="mode" value="Offline" id="RadioGroup1_1"
+  {% if mode == 'Offline' %}checked{% endif %}
+
+          />
+          Offline</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="Submit" class="btn btn-outline-success" /></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}
